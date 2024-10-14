@@ -1,14 +1,15 @@
 import React from 'react'
 
 
-const Item = ({data}) => {
+const Item = ({item,onDeleteItem,onToggleItem}) => {
   return (
     <>
        <li>
-        <span style={data.packed ? {textDecoration : "line-through"} : {}}>
-        {data.quantity} {data.description} 
+        <input type="checkbox" value={item.packed} onChange={()=>onToggleItem(item.id)} />
+        <span style={item.packed ? {textDecoration : "line-through"} : {}}>
+        {item.quantity} {item.description} 
         </span>
-        <button onClick={() => onDeleteItem(data.id)}>❌</button>
+        <button onClick={() => onDeleteItem(item.id)}>❌</button>
       </li>
     </>
   )
